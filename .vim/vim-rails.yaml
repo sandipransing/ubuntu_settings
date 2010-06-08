@@ -1,0 +1,26 @@
+addon: vim-rails
+description: Allows easier editing of Rails Applications
+files:
+  - autoload/rails.vim
+  - autoload/dbext.vim
+  - autoload/dbext_dbi.vim
+  - colors/vibrantink.vim
+  - colors/vividchalk.vim
+  - colors/wombat.vim
+  - doc/dbext.txt
+  - doc/project.txt
+  - doc/rails.txt
+  - doc/surround.txt
+  - plugin/allml.vim
+  - plugin/dbext.vim
+  - plugin/endwise.vim
+  - plugin/project.vim
+  - plugin/rails-toolkit.vim
+  - plugin/rails.vim
+  - plugin/SimpleFold.vim
+  - plugin/surround.vim
+  - plugin/tailminusf.vim
+  - syntax/cucumber.vim
+  - syntax/haml.vim
+  - syntax/sass.vim
+  - filetype.vim

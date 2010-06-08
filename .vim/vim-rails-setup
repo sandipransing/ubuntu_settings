@@ -1,0 +1,61 @@
+#!/bin/sh
+#
+# vim-rails: Setup vim for editing Rails files. Part of the rails-toolkit
+#
+# Copyright (C) 2007 Neil Wilson
+#
+# This program is free software, you can redistribute it and/or modify it under
+# the terms of the GNU General Public License version 3 as published by the
+# Free Software Foundation; either version 3 of the License, or (at your
+# option) any later version.
+#
+
+# Stop on error
+set -e
+
+# Constants: 
+# List of addons that comprise vim-rails
+vim_rails_addons="vim-rails matchit"
+
+# Test for root Effective ID
+is_root () {
+  test `id -u` -eq 0
+}
+
+# Switch on the vim-rails addons
+vim_rails_on () {
+    if is_root
+    then
+	echo "Switching vim-rails on system wide"
+	sys_wide=' -w '
+    else
+	echo "Switching vim-rails on for $USER"
+	unset sys_wide
+    fi
+    vim-addons ${sys_wide} install ${vim_rails_addons}
+}
+
+# Swtich off the vim-rails addons
+vim_rails_off () {
+    if is_root
+    then
+	echo "Switching vim-rails off system wide"
+	sys_wide=' -w '
+    else
+	echo "Switching vim-rails on for $USER"
+	unset sys_wide
+    fi
+    vim-addons ${sys_wide} remove ${vim_rails_addons}
+}
+
+if [ "$1" = "--remove" ]
+then
+    vim_rails_off
+elif [ "$#" -eq 0 ]
+then
+    vim_rails_on
+else
+    echo "Usage: `basename $0` [--remove]" >&2
+    exit 1
+fi
+
